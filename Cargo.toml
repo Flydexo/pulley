@@ -1,0 +1,36 @@
+[package]
+name = "pulley"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+crate-type = ['cdylib']
+
+[package.metadata.partisiablockchain]
+cargo-partisia = "0.2.16"
+
+[package.metadata.zk]
+zk-compute-path = "src/zk_compute.rs"
+
+[package.metadata.zkcompiler]
+download_method = "http"
+repositoryId = "secata"
+repositoryUrl = "https://gitlab.com/api/v4/projects/37549006/packages/maven"
+groupId = "com.partisiablockchain.language"
+artifactId = "zkcompiler"
+version = "3.0.17"
+
+[dependencies]
+pbc_contract_common = { git = "https://git@gitlab.com/partisiablockchain/language/contract-sdk.git", features = ["zk"] }
+pbc_contract_codegen = { git = "https://git@gitlab.com/partisiablockchain/language/contract-sdk.git", features = ["zk"] }
+pbc_traits = { git = "https://git@gitlab.com/partisiablockchain/language/contract-sdk.git" }
+pbc_lib = { git = "https://git@gitlab.com/partisiablockchain/language/contract-sdk.git" }
+read_write_rpc_derive = { git = "https://git@gitlab.com/partisiablockchain/language/contract-sdk.git" }
+read_write_state_derive = { git = "https://git@gitlab.com/partisiablockchain/language/contract-sdk.git" }
+create_type_spec_derive = { git = "https://git@gitlab.com/partisiablockchain/language/contract-sdk.git" }
+pbc_zk = { git = "https://git@gitlab.com/partisiablockchain/language/contract-sdk.git" }
+
+serde_json = "1.0"
+
+[features]
+abi = ["pbc_contract_common/abi", "pbc_contract_codegen/abi", "pbc_traits/abi", "create_type_spec_derive/abi"]
